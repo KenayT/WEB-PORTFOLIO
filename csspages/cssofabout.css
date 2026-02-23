@@ -1,0 +1,540 @@
+/* =========================================
+   Theme Variables 
+   ========================================= */
+:root {
+    --bg-color: #f8f9fa; --text-color: #1a1a1a; --text-muted: #666666;
+    --accent-color: #4a90e2; --nav-bg: rgba(248, 249, 250, 0.85);
+    --card-bg: rgba(255, 255, 255, 0.7); --card-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    --footer-bg: #e1e4e8; --font-main: 'Segoe UI', Roboto, sans-serif;
+    
+    --spot-cyan: rgba(74, 144, 226, 0.2);
+    --spot-purple: rgba(155, 89, 182, 0.1);
+    --spot-red: rgba(255, 99, 71, 0.1);
+}
+[data-theme="dark"] {
+    --bg-color: #0d0d12; /* Darker to let glows pop */ --text-color: #ffffff; --text-muted: #a0a0a0;
+    --accent-color: #64ffda; --nav-bg: rgba(13, 13, 18, 0.85);
+    --card-bg: rgba(30, 30, 36, 0.6); --card-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    --footer-bg: #0a0a0a;
+
+    /* These match your reference image */
+    --spot-cyan: rgba(0, 200, 150, 0.35); 
+    --spot-purple: rgba(80, 20, 120, 0.4);
+    --spot-red: rgba(150, 10, 30, 0.3);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+    font-family: var(--font-main); 
+    background-color: var(--bg-color); 
+    color: var(--text-color); 
+    overflow-x: hidden; 
+    line-height: 1.6; 
+}
+
+/* =========================================
+   Background Spotlights
+   ========================================= */
+.about-bg-glow {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(150px);
+    z-index: -1;
+    pointer-events: none;
+    /* ADDED SMOOTH TRANSITION HERE */
+    transition: background 0.6s ease, background-color 0.6s ease; 
+}
+.glow-cyan { top: 0; left: -10vw; width: 50vw; height: 60vh; background: var(--spot-cyan); }
+.glow-purple { top: 30vh; left: 25vw; width: 60vw; height: 60vh; background: var(--spot-purple); }
+.glow-red { bottom: -10vh; right: -10vw; width: 40vw; height: 50vh; background: var(--spot-red); }
+
+/* =========================================
+   Navigation & Typography
+   ========================================= */
+.navbar { 
+    position: fixed; top: 0; width: 100%; height: 70px; display: flex; justify-content: space-between; align-items: center; padding: 0 5%; 
+    background: var(--nav-bg); backdrop-filter: blur(15px); z-index: 1000; border-bottom: 1px solid rgba(128, 128, 128, 0.1); 
+    /* ADDED SMOOTH TRANSITION HERE */
+    transition: background-color 0.4s ease, border-color 0.4s ease; 
+}
+
+
+.logo { font-size: 1.8rem; font-weight: 800; letter-spacing: 2px; }
+.nav-links { list-style: none; display: flex; gap: 2.5rem; }
+.nav-links a { text-decoration: none; color: var(--text-color); font-weight: 600; text-transform: uppercase; font-size: 0.9rem; transition: 0.3s; }
+.nav-links a:hover, .nav-links a.active { color: var(--accent-color); }
+.theme-toggle { background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+
+.about-container { padding: 120px 10% 80px; max-width: 1200px; margin: 0 auto; }
+.page-title { font-size: 4rem; margin-bottom: 1.5rem; }
+.highlight { color: var(--accent-color); }
+.section-title { font-size: 2.5rem; margin-bottom: 2.5rem; margin-top: 5rem; color: var(--text-color); }
+
+/* =========================================
+   Typewriter Bio
+   ========================================= */
+.bio-content { font-size: 1.2rem; color: var(--text-muted); max-width: 800px; min-height: 150px; line-height: 1.8; }
+.type-cursor { display: inline-block; width: 3px; height: 1.1em; background-color: var(--accent-color); vertical-align: middle; margin-left: 5px; animation: blink 0.8s infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* =========================================
+   Skills Grid (Left/Right slide)
+   ========================================= */
+.skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+.skill-category h3 { margin-bottom: 1.5rem; color: var(--text-color); font-size: 1.5rem; }
+.skill-item { margin-bottom: 1.5rem; }
+.skill-info { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-weight: 600; }
+.skill-track { width: 100%; height: 8px; background-color: rgba(128, 128, 128, 0.2); border-radius: 10px; overflow: hidden; }
+.skill-fill { height: 100%; background-color: var(--accent-color); border-radius: 10px; width: 0; transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1); box-shadow: 0 0 10px var(--accent-color); }
+
+/* =========================================
+   Timeline Component (Fade Up)
+   ========================================= */
+.timeline { border-left: 2px solid var(--accent-color); padding-left: 2rem; margin-left: 1rem; }
+.timeline-item { position: relative; margin-bottom: 3rem; }
+.timeline-dot { position: absolute; left: -2.45rem; top: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--accent-color); box-shadow: 0 0 10px var(--accent-color); }
+.timeline-content h3 { color: var(--text-color); margin-bottom: 0.5rem; }
+.timeline-content p { color: var(--text-muted); }
+
+/* =========================================
+   Certs Component (Gallery Grid with Text)
+   ========================================= */
+.certs-grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 2rem; 
+}
+
+.cert-card { 
+    background: var(--card-bg); 
+    padding: 0; 
+    border-radius: 12px; 
+    backdrop-filter: blur(10px); 
+    /* Slightly thicker border to frame the card */
+    border: 2px solid rgba(128,128,128,0.2); 
+    box-shadow: var(--card-shadow); 
+    transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease; 
+    cursor: pointer;
+    overflow: hidden; 
+    display: flex;
+    flex-direction: column;
+}
+
+.cert-card:hover { 
+    transform: translateY(-8px); 
+    border-color: var(--accent-color); 
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+.cert-thumb-wrapper {
+    width: 100%;
+    height: 200px;
+    overflow: hidden; /* Keeps the zoom effect inside the box */
+    border-bottom: 2px solid rgba(128,128,128,0.1); /* Border separating image and text */
+}
+
+.cert-thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    object-position: top center;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.cert-card:hover .cert-thumb-img {
+    transform: scale(1.1); 
+}
+
+.cert-card-info {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.cert-card-info h3 {
+    color: var(--text-color);
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+    transition: color 0.4s ease;
+}
+
+.cert-card:hover .cert-card-info h3 {
+    color: var(--accent-color);
+}
+
+.cert-card-info p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* The new thumbnail image styling */
+.cert-thumb-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover; /* Zooms in to fill the box without squishing */
+    object-position: top center;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Beautiful zoom effect when hovering the card */
+.cert-card:hover .cert-thumb-img {
+    transform: scale(1.1); 
+}
+
+/* =========================================
+   Hobbies Component (Word Arranging)
+   ========================================= */
+.hobbies-section p { font-size: 1.2rem; line-height: 1.8; color: var(--text-muted); }
+.arrange-word { display: inline-block; white-space: pre; opacity: 0; transform: translateX(-30px); transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+
+/* =========================================
+   SCROLL ANIMATION CLASSES (The Magic)
+   ========================================= */
+.scroll-anim { opacity: 0; will-change: transform, opacity; }
+
+/* Fade Up */
+.fade-up { transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.fade-up.is-visible { opacity: 1; transform: translateY(0); }
+
+/* Slide Left / Right */
+.slide-left { transform: translateX(-60px); transition: opacity 1s ease, transform 1s ease; }
+.slide-left.is-visible { opacity: 1; transform: translateX(0); }
+
+.slide-right { transform: translateX(60px); transition: opacity 1s ease, transform 1s ease; }
+.slide-right.is-visible { opacity: 1; transform: translateX(0); }
+
+/* Pop In */
+.pop-in { transform: scale(0.8); transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+.pop-in.is-visible { opacity: 1; transform: scale(1); }
+
+/* Hobbies Word Arrange */
+.arrange-text.is-visible .arrange-word { opacity: 1; transform: translateX(0); }
+
+.footer { 
+    padding: 40px; text-align: center; background: var(--footer-bg); border-top: 1px solid rgba(128,128,128,0.1); margin-top: 5rem; 
+    transition: background-color 0.4s ease, border-color 0.4s ease; 
+}
+
+/* =========================================
+   Theme Toggle Water Droplet
+   ========================================= */
+.page-transition-droplet {
+    position: fixed;
+    width: 2vw; 
+    height: 2vw; 
+    background-color: var(--accent-color); /* The cool cyan/aqua color */
+    border-radius: 50%;
+    z-index: 900; /* Stays neatly under the Navbar */
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(1);
+    transform-origin: center center;
+    transition: transform 0.6s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.4s ease;
+}
+
+/* =========================================
+   VIEW TRANSITIONS OVERRIDE (Fixes Transparency)
+   ========================================= */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation: none; /* Disables the default cross-fade */
+    mix-blend-mode: normal; /* Prevents colors from blending together */
+}
+
+::view-transition-old(root) {
+    z-index: 1;
+}
+
+::view-transition-new(root) {
+    z-index: 9999; /* Forces the new theme to stay solid on top */
+}
+
+/* Optional: Ensure spotlights don't transition while the wipe happens */
+[data-theme="dark"] .about-bg-glow,
+[data-theme="light"] .about-bg-glow {
+    transition: none;
+}
+
+/* =========================================
+   Typewriter Fonts & Layout Adjustments
+   ========================================= */
+.typewriter-font {
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+}
+.timeline-desc {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    margin-top: -1.5rem;
+}
+
+/* 2-Column Bio Layout */
+.bio-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+}
+.bio-text-side {
+    flex: 1;
+}
+.bio-image-side {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* =========================================
+   Single Profile Image with Hover Glow
+   ========================================= */
+/* The container that handles the shape, shadow, and hover animation */
+.profile-slideshow {
+    position: relative;
+    width: 350px;
+    height: 450px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    /* Start with transparent border */
+    border: 2px solid transparent;
+    /* Smooth transitions for the hover effect */
+    transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+    background-color: var(--bg-color);
+}
+
+/* When hovering the container, scale up and glow cyan */
+.profile-slideshow:hover {
+    transform: scale(1.02);
+    border-color: var(--accent-color);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.4);
+}
+
+/* Styling the single image inside */
+.profile-single-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the photo fills the box without stretching */
+    transition: transform 0.5s ease;
+}
+
+/* Optional: subtly zoom the image itself a bit more than the container on hover */
+.profile-slideshow:hover .profile-single-img {
+    transform: scale(1.03);
+}
+
+/* Default state when NOT hovering (Slide 1 is visible) */
+.profile-slideshow .slide-1 { 
+    opacity: 1; 
+    z-index: 2;
+}
+
+/* When hovering, run the 10-second cycle */
+.profile-slideshow:hover .slide {
+    animation: cycleImages 10s linear infinite;
+}
+
+/* NEGATIVE delays are the magic trick! 
+  It ensures the cycle is already perfectly timed the moment you hover.
+*/
+.profile-slideshow:hover .slide-1 { animation-delay: 0s; }
+.profile-slideshow:hover .slide-2 { animation-delay: 2s; }
+.profile-slideshow:hover .slide-3 { animation-delay: 2s; }
+.profile-slideshow:hover .slide-4 { animation-delay: 2s; }
+.profile-slideshow:hover .slide-5 { animation-delay: 2s; }
+
+/* The perfect 5-image crossfade formula */
+@keyframes cycleImages {
+    0% { opacity: 1; z-index: 2; }
+    15% { opacity: 1; z-index: 2; }
+    25% { opacity: 0; z-index: 1; }
+    90% { opacity: 0; z-index: 1; }
+    100% { opacity: 1; z-index: 2; }
+}
+
+
+/* By default, show image 1 */
+.profile-slideshow .slide-1 { opacity: 1; }
+
+/* When hovering, run the 10-second cycle (5 images, 2s each) */
+.profile-slideshow:hover .slide {
+    animation: cycleImages 10s infinite;
+}
+/* Stagger the animations so they take turns showing */
+.profile-slideshow:hover .slide-1 { animation-delay: 0s; }
+.profile-slideshow:hover .slide-2 { animation-delay: 2s; }
+.profile-slideshow:hover .slide-3 { animation-delay: 4s; }
+.profile-slideshow:hover .slide-4 { animation-delay: 6s; }
+.profile-slideshow:hover .slide-5 { animation-delay: 8s; }
+
+@keyframes cycleImages {
+    0%, 15% { opacity: 1; z-index: 2; } /* Stay visible */
+    20%, 100% { opacity: 0; z-index: 1; } /* Fade out and stay hidden */
+}
+
+/* Responsive adjustment for Bio */
+@media (max-width: 900px) {
+    .bio-section { flex-direction: column; text-align: center; }
+    .bio-image-side { justify-content: center; margin-top: 2rem; }
+}
+
+/* =========================================
+   Skill Bar Shine Animation on Hover
+   ========================================= */
+.skill-fill {
+    position: relative;
+    overflow: hidden; /* Contains the shine */
+}
+/* Create a slanted white light beam */
+.skill-fill::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -150%; 
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+    transform: skewX(-20deg);
+    transition: 0s; /* Reset instantly when not hovered */
+}
+/* When you hover the row, the beam slides across */
+.skill-item:hover .skill-fill::after {
+    left: 150%;
+    transition: left 0.8s ease-in-out;
+}
+
+/* =========================================
+   Interactive Certificate Showcase
+   ========================================= */
+.cert-showcase {
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease, margin 0.6s ease;
+    background: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--accent-color);
+}
+
+.cert-showcase.active {
+    max-height: 800px; /* Large enough to hold the content */
+    opacity: 1;
+    margin-bottom: 3rem;
+}
+
+.cert-showcase-inner {
+    display: flex;
+    gap: 3rem;
+    padding: 3rem;
+    align-items: center;
+}
+
+.cert-img-container {
+    flex: 1.5;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.cert-img-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.cert-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cert-details h3 {
+    font-size: 2rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.cert-details p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.cert-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--text-color);
+    border: 2px solid var(--text-muted);
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-outline:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+/* Make cert cards look clickable */
+.cert-card {
+    cursor: pointer;
+}
+
+/* Mobile Adjustments for Showcase */
+@media (max-width: 900px) {
+    .cert-showcase-inner {
+        flex-direction: column;
+        padding: 1.5rem;
+    }
+    .cert-showcase.active {
+        max-height: 1200px;
+    }
+}
+
+/* =========================================
+   Custom Trailing Cursor
+   ========================================= */
+.custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px; /* Made smaller */
+    height: 20px; /* Made smaller */
+    border: 2px solid rgba(255, 255, 255, 0.6); /* Transparent white */
+    border-radius: 50%;
+    pointer-events: none; /* Crucial: stops the circle from blocking your clicks */
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    /* The transition creates that smooth, trailing "lag" effect */
+    transition: top 0.1s ease-out, left 0.1s ease-out, width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
+}
+
+/* Light Theme Cursor Adjustments */
+[data-theme="light"] .custom-cursor {
+    border-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Cursor Hover Effect: Expands slightly when hovering over links or buttons */
+body:has(a:hover) .custom-cursor,
+body:has(button:hover) .custom-cursor {
+    width: 35px; /* Smaller expansion than before */
+    height: 35px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-color); /* Changes to your theme accent color */
+}
+
+[data-theme="light"] body:has(a:hover) .custom-cursor,
+[data-theme="light"] body:has(button:hover) .custom-cursor {
+    background-color: rgba(0, 0, 0, 0.05);
+}

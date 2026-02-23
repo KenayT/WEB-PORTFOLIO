@@ -1,0 +1,107 @@
+/* =========================================
+   Theme Variables & Engine
+   ========================================= */
+:root {
+    --bg-color: #f8f9fa; --text-color: #1a1a1a; --text-muted: #666666;
+    --accent-color: #4a90e2; --nav-bg: rgba(248, 249, 250, 0.85);
+    --card-bg: rgba(255, 255, 255, 0.7); --card-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    --footer-bg: #e1e4e8; --font-main: 'Segoe UI', Roboto, sans-serif;
+    --spot-cyan: rgba(74, 144, 226, 0.2); --spot-purple: rgba(155, 89, 182, 0.1); --spot-red: rgba(255, 99, 71, 0.1);
+}
+[data-theme="dark"] {
+    --bg-color: #0d0d12; --text-color: #ffffff; --text-muted: #a0a0a0;
+    --accent-color: #64ffda; --nav-bg: rgba(13, 13, 18, 0.85);
+    --card-bg: rgba(30, 30, 36, 0.6); --card-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    --footer-bg: #0a0a0a;
+    --spot-cyan: rgba(0, 200, 150, 0.35); --spot-purple: rgba(80, 20, 120, 0.4); --spot-red: rgba(150, 10, 30, 0.3);
+}
+
+::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+::view-transition-old(root) { z-index: 1; }
+::view-transition-new(root) { z-index: 9999; }
+[data-theme="dark"] .bg-glow, [data-theme="light"] .bg-glow { transition: none; }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-main); background-color: var(--bg-color); color: var(--text-color); overflow-x: hidden; line-height: 1.6; }
+
+.custom-cursor { position: fixed; top: 0; left: 0; width: 20px; height: 20px; border: 2px solid var(--accent-color); border-radius: 50%; pointer-events: none; z-index: 9999; opacity: 0; transition: opacity 0.3s ease; mix-blend-mode: difference; }
+.bg-glow { position: fixed; border-radius: 50%; filter: blur(150px); z-index: -1; pointer-events: none; transition: background 0.6s ease; }
+.glow-cyan { top: 0; left: -10vw; width: 50vw; height: 60vh; background: var(--spot-cyan); }
+.glow-purple { top: 30vh; left: 25vw; width: 60vw; height: 60vh; background: var(--spot-purple); }
+.glow-red { bottom: -10vh; right: -10vw; width: 40vw; height: 50vh; background: var(--spot-red); }
+
+/* Navigation */
+.navbar { position: fixed; top: 0; width: 100%; height: 70px; display: flex; justify-content: space-between; align-items: center; padding: 0 5%; background: var(--nav-bg); backdrop-filter: blur(15px); z-index: 1000; border-bottom: 1px solid rgba(128, 128, 128, 0.1); transition: background-color 0.4s ease; }
+.logo { font-size: 1.8rem; font-weight: 800; letter-spacing: 2px; }
+.nav-links { list-style: none; display: flex; gap: 2.5rem; }
+.nav-links a { text-decoration: none; color: var(--text-color); font-weight: 600; text-transform: uppercase; font-size: 0.9rem; transition: 0.3s; }
+.nav-links a:hover, .nav-links a.active { color: var(--accent-color); }
+.theme-toggle { background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+
+/* Typography */
+.typewriter-font { font-family: 'Courier New', Courier, monospace; letter-spacing: -1px; text-transform: uppercase; }
+.highlight { color: var(--accent-color); }
+.page-title { font-size: 4.5rem; font-family: 'Playfair Display', 'Georgia', serif; line-height: 1.1; margin-bottom: 0.5rem; }
+
+/* =========================================
+   Resume Layout
+   ========================================= */
+.resume-container { padding: 120px 5% 60px; max-width: 1200px; margin: 0 auto; }
+.resume-header { text-align: center; margin-bottom: 5rem; }
+.subtitle { color: var(--text-muted); font-size: 1.2rem; margin-bottom: 2.5rem; }
+
+/* Download Button */
+.download-wrapper { display: flex; justify-content: center; }
+.download-btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 40px; background: var(--accent-color); color: var(--bg-color); font-weight: 700; font-size: 1.1rem; border-radius: 50px; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s; }
+.download-btn:hover { transform: translateY(-5px); box-shadow: 0 15px 30px var(--spot-cyan); }
+.download-icon { width: 20px; height: 20px; }
+
+/* 2-Column Grid matching the PDF layout */
+.resume-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; }
+
+/* Blocks */
+.resume-block { background: var(--card-bg); padding: 3rem; border-radius: 15px; border: 1px solid rgba(128,128,128,0.1); box-shadow: var(--card-shadow); backdrop-filter: blur(10px); margin-bottom: 3rem; transition: transform 0.4s ease, border-color 0.4s ease; }
+.resume-block:hover { transform: translateY(-5px); border-color: var(--accent-color); }
+.block-title { font-size: 1.8rem; margin-bottom: 2rem; color: var(--text-color); font-family: 'Playfair Display', serif; position: relative; padding-bottom: 10px; }
+.block-title::after { content: ''; position: absolute; left: 0; bottom: 0; width: 40px; height: 3px; background: var(--accent-color); }
+
+/* Skills Section */
+.skills-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+.skills-list li { padding-left: 20px; position: relative; color: var(--text-muted); font-size: 1.05rem; }
+.skills-list li::before { content: '▹'; position: absolute; left: 0; color: var(--accent-color); font-weight: bold; }
+
+/* Education Timeline */
+.timeline { border-left: 2px solid rgba(128,128,128,0.2); padding-left: 20px; }
+.timeline-item { position: relative; margin-bottom: 2rem; }
+.timeline-item::before { content: ''; position: absolute; left: -26px; top: 0; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-color); }
+.timeline-date { font-family: 'Courier New', monospace; font-size: 0.85rem; color: var(--accent-color); display: block; margin-bottom: 0.3rem; }
+.timeline-title { font-size: 1.1rem; color: var(--text-color); margin-bottom: 0.2rem; }
+.timeline-desc { font-size: 0.9rem; color: var(--text-muted); }
+
+/* Certifications */
+.cert-item { margin-bottom: 1.5rem; border-bottom: 1px solid rgba(128,128,128,0.1); padding-bottom: 1.5rem; }
+.cert-item:last-child { margin-bottom: 0; border-bottom: none; padding-bottom: 0; }
+.cert-item h4 { font-size: 1.1rem; margin-bottom: 0.3rem; }
+.cert-item p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.4; }
+
+/* Career Profile */
+.profile-text { font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem; }
+.profile-text strong { color: var(--text-color); }
+
+/* Projects */
+.project-item { margin-bottom: 2.5rem; }
+.project-title { font-size: 1.2rem; color: var(--accent-color); margin-bottom: 0.8rem; letter-spacing: 1px; }
+.project-desc { font-size: 1.05rem; color: var(--text-muted); line-height: 1.7; }
+
+/* Utils & Animations */
+.scroll-anim { opacity: 0; will-change: transform, opacity; }
+.fade-up { transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.fade-up.is-visible { opacity: 1; transform: translateY(0); }
+.slide-left { transform: translateX(-40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.slide-left.is-visible { opacity: 1; transform: translateX(0); }
+.slide-right { transform: translateX(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.slide-right.is-visible { opacity: 1; transform: translateX(0); }
+
+.footer { padding: 40px; text-align: center; background: var(--footer-bg); border-top: 1px solid rgba(128,128,128,0.1); margin-top: 2rem; transition: background-color 0.4s ease; }
+
+@media (max-width: 900px) { .resume-grid { grid-template-columns: 1fr; gap: 2rem; } .page-title { font-size: 3.5rem; } }

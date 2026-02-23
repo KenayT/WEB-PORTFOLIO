@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Projects by Kenneth Punsalan">
+    <link rel="icon" type="image/png" href="img/logo.jpg">
+    <title>Projects | Kenneth Punsalan</title>
+    <link rel="stylesheet" href="csspages/cssofprojects.css">
+</head>
+<body>
+    <div class="custom-cursor" id="custom-cursor"></div>
+
+    <div class="bg-glow glow-cyan"></div>
+    <div class="bg-glow glow-purple"></div>
+    <div class="bg-glow glow-red"></div>
+
+    <nav class="navbar">
+        <div class="logo">KD.</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html" class="active">Projects</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="theme-toggle" id="theme-btn" aria-label="Switch to Light Mode">☀️</button>
+    </nav>
+
+    <main class="projects-split-layout">
+        
+        <section class="preview-side">
+            <div class="preview-container" id="preview-container">
+                <div class="preview-image-wrapper">
+                    <img src="" alt="Project Preview" id="preview-image-1" class="preview-img active">
+                    <img src="" alt="Project Preview" id="preview-image-2" class="preview-img">
+                </div>
+            </div>
+        </section>
+
+        <section class="list-side">
+            <div class="list-header scroll-anim fade-up">
+                <h1 class="page-title">Project <span class="highlight">Section.</span></h1>
+                <p class="subtitle typewriter-font">Hover to see and explore.</p>
+            </div>
+
+            <div class="projects-list" id="projects-list">
+                <a href="projects/appdev.html" class="project-row scroll-anim fade-up" style="transition-delay: 100ms;" data-img="img/appdev.jpg">
+                    <div class="project-name">APPDEV</div>
+                    <div class="project-category typewriter-font">Mobile Application Project</div>
+                </a>
+
+                <a href="projects/aweb.html" class="project-row scroll-anim fade-up" style="transition-delay: 200ms;" data-img="img/aweb.jpg">
+                    <div class="project-name">AWEB</div>
+                    <div class="project-category typewriter-font">Angular Reactive Form Project</div>
+                </a>
+
+                <a href="projects/addbase.html" class="project-row scroll-anim fade-up" style="transition-delay: 300ms;" data-img="img/addbase.jpg">
+                    <div class="project-name">ADDBASE</div>
+                    <div class="project-category typewriter-font">Merchandise Brand Database Project</div>
+                </a>
+
+                <a href="projects/webpub.html" class="project-row scroll-anim fade-up" style="transition-delay: 400ms;" data-img="img/webpub.jpg">
+                    <div class="project-name">WEBPUB</div>
+                    <div class="project-category typewriter-font">Logistics Provider Website Project</div>
+                </a>
+            </div>
+        </section>
+
+    <script src="javapages/javaforprojects.js"></script>
+</body>
+</html>

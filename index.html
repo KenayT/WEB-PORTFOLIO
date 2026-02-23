@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<!-- HEAD SECTION -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kenneth Punsalan - Professional Web Developer Portfolio">
+    <title>Home | KD</title>
+    <link rel="stylesheet" href="csspages/cssofindex.css">
+    <link rel="icon" type="image/png" href="img/logo.jpg">
+</head>
+<body>
+
+    <!-- custom cursor for fun -->
+    <div class="custom-cursor" id="custom-cursor"></div>
+
+
+    <!-- LOGO -->
+    <nav class="navbar">
+        <div class="logo">KD.</div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <button class="theme-toggle" id="theme-btn" aria-label="Switch to Light Mode">☀️</button>
+    </nav>
+
+    <!-- THE 4 COMPONENTS -->
+    <section class="hero-container">
+        <div class="quadrant-grid">
+            <a href="#projects" class="quadrant top-left">
+                <div class="content">
+                    <h2>&lt;Coder&gt;</h2>
+                    <p>Clean, efficient, elegant, and well structured code.</p>
+                </div>
+            </a>
+            <a href="#projects" class="quadrant top-right">
+                <div class="content">
+                    <h2>Designer</h2>
+                    <p>Designing intuitive and stunning UI/UX for you users to use.</p>
+                </div>
+            </a>
+            <a href="about.html" class="quadrant bottom-left" id="about-quadrant">
+                <video class="bg-video" src="img/video.mp4" muted loop playsinline id="about-video"></video>
+                <div class="video-overlay"></div>
+                <div class="content">
+                    <h2>About Me</h2>
+                    <p>Discover my journey and my reason why I chose IT.</p>
+                </div>
+            </a>
+            <a href="contact.html" class="quadrant bottom-right">
+                <div class="content">
+                    <h2>Contact Me</h2>
+                    <p>Got something in mind? let us Collaborate!</p>
+                </div>
+            </a>
+        </div>
+
+        <!-- IMAGE IN THE CENTER -->
+        <div class="center-portrait">
+            <img src="mee.jpg" alt="Kenneth Punsalan Portrait" class="profile-img">
+        </div>
+    </section>
+
+
+    <!-- BELOW THE INTRO PART, A SECTION OF GREETINGS -->
+    <section class="intro-section" id="intro">
+        <div class="intro-bg-glow-1"></div>
+        <div class="intro-bg-glow-2"></div>
+        <div class="intro-bg-glow-3"></div>
+
+        <div class="intro-content">
+            <h1 class="intro-greeting">Hello there,</h1>
+            <h2 class="intro-headline">I am Kenneth. <br><span class="highlight">A Web Developer & Designer.</span></h2>
+            <p class="intro-bio">
+                I integrate UI/UX design and software engineering through structured IT tools and methodologies,
+                covering requirements analysis, system design, implementation, testing, and deployment. 
+                I deliver secure, scalable, and user-centered web solutions.
+            </p>
+            <a href="about.html" class="btn-primary">MORE ABOUT ME</a>
+        </div>
+        
+        <!-- ANOTHER IMAGE TO SUPPORT CREDIBILITY -->
+        <div class="intro-image-destination">
+            <img src="img/newme.jpg" alt="Kenneth Punsalan Bio Image" class="intro-profile-img" id="intro-img">
+        </div>
+    </section>
+
+
+   <section class="projects-section" id="projects">
+        <h2 class="section-title">Some of my latest projects</h2>
+        <div class="projects-grid">
+            <a href="about.html" class="project-card">
+                <div class="project-img-wrapper">
+                    <img src="img/seoimg.png" alt="Project 1" class="project-img">
+                </div>
+                <div class="project-info">
+                    <h3>SEO Project </h3>
+                    <p>Covers up the SEO by being capable of implementing advance SEO tactics on a website.</p>
+                </div>
+            </a>
+            
+            <a href="about.html" class="project-card">
+                <div class="project-img-wrapper">
+                    <img src="img/einstein.jpg" alt="Project 2" class="project-img">
+                </div>
+                <div class="project-info">
+                    <h3>Einstein's ART WEBSITE</h3>
+                    <p>The creation of Website for Einstein's Art to further increase its views and sales. </p>
+                </div>
+            </a>
+            
+            <a href="about.html" class="project-card">
+                <div class="project-img-wrapper">
+                    <img src="img/flutter.jpg" alt="Project 3" class="project-img">
+                </div>
+                <div class="project-info">
+                    <h3>Flutter APP PROJECT</h3>
+                    <p>A fully working application for online keyboard shopping made with Flutter and Dart program.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h2 class="footer-logo">KD.</h2>
+            <p>Designed and built with passion by Kenneth Punsalan.</p>
+            <div class="footer-socials">
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+                <a href="#">Email</a>
+            </div>
+            <p class="copyright">&copy; 2026 Kenneth Punsalan. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+
+    <!-- LINK FOR JAVASCRIPT -->
+    <script src="javapages/javaforindex.js"></script>
+
+
+</body>
+</html>
